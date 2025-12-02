@@ -1,0 +1,118 @@
+.tools-slider-wrapper {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-dark-secondary);
+    overflow: hidden;
+}
+
+.tools-slider-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.tools-title {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-primary);
+}
+
+.tools-slider {
+    position: relative;
+    overflow: hidden;
+    padding: var(--spacing-lg) 0;
+}
+
+.tools-slider::before,
+.tools-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tools-slider::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-dark-secondary), transparent);
+}
+
+.tools-slider::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-dark-secondary), transparent);
+}
+
+.tools-track {
+    display: flex;
+    gap: var(--spacing-md);
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+}
+
+.tools-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.tool-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    width: 100px;
+    height: 100px;
+    transition: all var(--transition-base);
+}
+
+.tool-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+}
+
+.tool-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tools-title {
+        font-size: 1.5rem;
+    }
+
+    .tool-item {
+        width: 80px;
+        height: 80px;
+        padding: var(--spacing-sm);
+    }
+
+    .tool-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .tools-track {
+        animation-duration: 20s;
+    }
+}
